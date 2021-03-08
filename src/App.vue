@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import 'styles/index.scss';
 
 body {
   margin: 0;
@@ -60,7 +60,7 @@ body {
 
   a {
     line-height: 32px;
-    color: $color-white;
+    color: $background-white;
   }
 }
 
@@ -70,7 +70,7 @@ body {
 
   padding: 24px 48px;
 
-  background-color: $color-background-root;
+  background-color: $background-root;
 }
 </style>
 AZ
