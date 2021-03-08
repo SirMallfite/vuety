@@ -1,26 +1,76 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app__sidebar">
+    <router-link v-for="route in routes" :key="route.name" :to="route.path">
+      {{ route.name }}
+    </router-link>
+  </div>
+  <div class="app__body">
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import {computed} from 'vue'
+import router from "@/router";
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  setup() {
+    const routes = computed(() => router.options.routes)
+    routes.value.shift()
+
+    return {
+      routes
+    }
+
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
+  display: inline-flex;
+}
+
+.app__sidebar {
+  width: 320px;
+  height: 100%;
+
+  background-color: $color-primary;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  a {
+    line-height: 32px;
+    color: $color-white;
+  }
+}
+
+.app__body {
+  width: calc(100vw - 320px);
+  height: 100%;
+
+  padding: 24px 48px;
+
+  background-color: $color-background-root;
 }
 </style>
+AZ
