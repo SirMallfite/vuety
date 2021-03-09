@@ -10,11 +10,15 @@
   <base-text-field label="Type number" type="number"/>
 
   <base-text-field label="Type password" type="password"/>
+
+
+  <base-icon name="padlock" />
 </template>
 <script>
 import BaseTextField from "@/components/TextField";
+import BaseIcon from "@/components/BaseIcon";
 export default {
-  components: {BaseTextField}
+  components: {BaseIcon, BaseTextField}
 }
 </script>
 <style scoped lang="scss">
