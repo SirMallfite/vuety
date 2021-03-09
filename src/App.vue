@@ -31,6 +31,10 @@ export default {
 <style lang="scss">
 @import 'styles/index.scss';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;

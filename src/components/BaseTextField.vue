@@ -9,14 +9,20 @@
         @keypress="onKeyPress"
     />
     <label v-if="label" class="base-text-field__label">{{ label }}</label>
+
+    <div v-if="prefixIcon" class="base-text-field__prefix">
+      <base-icon :icon="prefixIcon" />
+    </div>
   </div>
 
 </template>
 <script>
 import {ref, computed, watch} from "vue";
+import BaseIcon from "@/components/BaseIcon";
 
 export default {
   name: 'BaseTextField',
+  components: {BaseIcon},
   props: {
     label: {
       type: String,
@@ -33,6 +39,10 @@ export default {
     type: {
       type: String,
       default: 'text'
+    },
+    prefixIcon: {
+      type: String,
+      default: null
     }
   },
 
@@ -40,7 +50,8 @@ export default {
     let model = ref(null)
     const classes = computed(() => ({
       'base-text-field': true,
-      'base-text-field--has-value': model.value
+      'base-text-field--has-value': model.value,
+      'base-text-field--has-prefix': props.prefixIcon
     }))
 
     const onInput = $event => {
@@ -70,16 +81,18 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+$defaultHeight: 56px;
+$defaultPadding: 12px;
+$denseHeight: 32px;
 
 .base-text-field {
   position: relative;
-  height: 56px;
+  height: $defaultHeight;
   max-width: 496px;
-  box-sizing: border-box;
 
   &__label {
     position: absolute;
-    left: 12px;
+    left: $defaultPadding;
     top: 16px;
 
     font-size: 16px;
@@ -105,7 +118,7 @@ export default {
     width: 100%;
     height: 100%;
 
-    padding: 0 12px;
+    padding: 0 $defaultPadding;
     border-radius: 4px;
 
     outline: none;
@@ -138,6 +151,10 @@ export default {
       & ~ .base-text-field__label {
         @extend .base-text-field__label--focused;
       }
+
+      & ~ .base-text-field__prefix {
+        border-color: $color-primary;
+      }
     }
 
     &:placeholder-shown + .base-text-field__label {
@@ -145,9 +162,43 @@ export default {
     }
   }
 
+  &__prefix {
+    width: $defaultHeight;
+    height: $defaultHeight;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    background: $background-form;
+    border: 1px solid $color-secondary;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+
+    .base-icon {
+      fill: $color-primary;
+    }
+  }
+
   &--has-value {
     .base-text-field__label {
       @extend .base-text-field__label--focused;
+    }
+  }
+
+  &--has-prefix {
+    width: calc(100% - #{$defaultHeight});
+
+    .base-text-field__input {
+      padding-left: calc(#{$defaultHeight} + #{$defaultPadding});
+    }
+
+    .base-text-field__label {
+      left: calc(#{$defaultHeight} + #{$defaultPadding});
     }
   }
 }

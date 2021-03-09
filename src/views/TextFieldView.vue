@@ -1,7 +1,7 @@
 <template>
   <h1>Text Field</h1>
 
-  <base-text-field label="Simple" />
+  <base-text-field label="Simple"/>
 
   <base-text-field label="With placeholder" placeholder="Placeholder"/>
 
@@ -11,18 +11,18 @@
 
   <base-text-field label="Type password" type="password"/>
 
+  <base-text-field label="With prefix icon" prefix-icon="home" />
 
-  <base-icon name="padlock" />
 </template>
 <script>
-import BaseTextField from "@/components/TextField";
-import BaseIcon from "@/components/BaseIcon";
+import BaseTextField from "@/components/BaseTextField";
+
 export default {
-  components: {BaseIcon, BaseTextField}
+  components: {BaseTextField}
 }
 </script>
 <style scoped lang="scss">
 .base-text-field {
-  margin-bottom: 24px;
+  margin-bottom: 40px;
 }
 </style>

@@ -1,6 +1,7 @@
 import {createWebHistory, createRouter} from "vue-router";
 import Home from "@/views/Home.vue";
-import TextField from "@/views/TextField.vue";
+import TextFieldView from "@/views/TextFieldView.vue";
+import IconView from "@/views/IconView.vue"
 
 const routes = [
     {
@@ -11,7 +12,12 @@ const routes = [
     {
         path: "/text-field",
         name: "TextField",
-        component: TextField,
+        component: TextFieldView,
+    },
+    {
+        path: "/icon",
+        name: "Icon",
+        component: IconView,
     },
 ];
 
