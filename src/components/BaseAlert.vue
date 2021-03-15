@@ -1,6 +1,5 @@
 <template>
   <div :class="classes">
-
     <base-icon :icon="type" size="large"/>
     <div>{{ text }}</div>
   </div>
