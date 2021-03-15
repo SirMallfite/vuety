@@ -1,5 +1,7 @@
 <template>
-  <component :is="component" :class="classes"/>
+  <div :class="classes">
+    <component :is="component"/>
+  </div>
 </template>
 
 <script>
@@ -27,29 +29,42 @@ export default {
 </script>
 <style scoped lang="scss">
 .base-icon {
+  display: inline-flex;
+
   &--x-small {
-    width: 16px;
-    height: 16px;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 
   &--small {
-    width: 24px;
-    height: 24px;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &--medium {
-    width: 32px;
-    height: 32px;
+    svg {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   &--large {
-    width: 40px;
-    height: 40px;
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+
   }
 
   &--x-large {
-    width: 48px;
-    height: 48px;
+    svg {
+      width: 48px;
+      height: 48px;
+    }
   }
 }
 </style>

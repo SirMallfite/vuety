@@ -2,6 +2,7 @@ import {createWebHistory, createRouter} from "vue-router";
 import Home from "@/views/Home.vue";
 import TextFieldView from "@/views/TextFieldView.vue";
 import IconView from "@/views/IconView.vue"
+import AlertView from "@/views/AlertView";
 
 const routes = [
     {
@@ -19,6 +20,11 @@ const routes = [
         name: "Icon",
         component: IconView,
     },
+    {
+        path: "/alert",
+        name: "Alert",
+        component: AlertView,
+    }
 ];
 
 const router = createRouter({
